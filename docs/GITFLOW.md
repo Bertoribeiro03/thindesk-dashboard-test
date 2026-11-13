@@ -10,7 +10,7 @@
 
 ## Fluxo local
 
-O repositório é a pasta `thindesk-dashboard/`. As branches de trabalho previstas nesta entrega são `feature/api-dashboard`, `feature/dashboard-ui`, `feature/docs-testes` e `release/1.0.0`; as branches são mantidas para inspeção. O registro do resultado local é acrescentado na estabilização da release. Comandos usados (mensagens explícitas nos merges evitam abrir editor):
+O repositório é a pasta `thindesk-dashboard/`. As branches de trabalho usadas nesta entrega são `feature/api-dashboard`, `feature/dashboard-ui`, `feature/docs-testes` e `release/1.0.0`; as branches são mantidas para inspeção. Comandos usados (mensagens explícitas nos merges evitam abrir editor):
 
 ```powershell
 git init
@@ -50,6 +50,8 @@ git merge --no-ff release/1.0.0 -m "merge: release 1.0.0 em develop"
 ```
 
 Verificação: `git log --graph --oneline --all --decorate`, `git branch -a`, `git tag -n`, `git status --short`, `git remote -v`. O Git é local; um histórico local não equivale a publicação no GitHub. `.gitignore` exclui `.venv/`, `__pycache__/`, `*.db`, `.env`, `.pytest_cache/` e runtime. Não há segredos no projeto.
+
+Registro da estabilização em 13/11/2026: as três features foram commitadas e integradas em develop com merges `--no-ff`; `release/1.0.0` foi criada e executou novamente **58 testes aprovados em 3,42 s**, com 187 avisos de depreciação e nenhuma falha. A [saída real da release](evidencias/pytest_2026-11-13_release.txt) e seu JUnit foram incluídos no commit de estabilização. A codificação dos acentos das mensagens dos commits locais próprios foi corrigida antes da tag, preservando arquivos, autores, datas e topologia. Nenhum histórico remoto foi alterado. O fechamento usa os merges e a tag anotada `v1.0.0` acima; os refs locais permitem conferir o resultado diretamente.
 
 ## Publicação no GitHub
 

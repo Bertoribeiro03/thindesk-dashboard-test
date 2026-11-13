@@ -125,3 +125,7 @@ As ferramentas de QA requerem portas 8000–8002 livres e encerram somente proce
 - [ ] Gravação do vídeo — **não executada pelo agente**.
 
 Sem autenticação nesta versão; recomendar OAuth/SSO ou token atrás de proxy reverso. Chart.js depende de internet; alternativa pendente em `dashboard/vendor/`. A suíte aprovada com warnings não prova compatibilidade de todas as versões futuras das transitivas; o ambiente efetivo foi registrado para auditoria.
+
+## Reexecução na release/1.0.0
+
+Resultado real: **58 passed, 187 warnings in 3.42s**. [Saída integral](evidencias/pytest_2026-11-13_release.txt), [JUnit](evidencias/pytest_2026-11-13_release.xml). Evidência gerada na branch de release antes dos merges e da tag.
