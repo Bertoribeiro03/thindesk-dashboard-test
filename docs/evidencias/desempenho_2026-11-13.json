@@ -1,0 +1,73 @@
+{
+  "data": "2026-11-13T19:51:24.192950-03:00",
+  "registros": 10000,
+  "amostras_por_endpoint": 5,
+  "metodo": "curl -w %{time_total}; HTTP em loopback; 1 aquecimento + 5 amostras sequenciais; sem concorrência; inclui transporte e serialização; não mede CDN",
+  "endpoints": {
+    "/dashboard/summary": {
+      "tempos_ms": [
+        8.649000000000001,
+        9.65,
+        10.453000000000001,
+        10.255,
+        10.021
+      ],
+      "min_ms": 8.649000000000001,
+      "mediana_ms": 10.021,
+      "max_ms": 10.453000000000001,
+      "meta_500ms_atingida": true
+    },
+    "/dashboard/timeseries": {
+      "tempos_ms": [
+        25.686,
+        27.015,
+        25.988,
+        27.909,
+        27.792
+      ],
+      "min_ms": 25.686,
+      "mediana_ms": 27.015,
+      "max_ms": 27.909,
+      "meta_500ms_atingida": true
+    },
+    "/dashboard/status-distribution": {
+      "tempos_ms": [
+        3.93,
+        4.193,
+        4.929,
+        5.933,
+        4.494
+      ],
+      "min_ms": 3.93,
+      "mediana_ms": 4.494,
+      "max_ms": 5.933,
+      "meta_500ms_atingida": true
+    },
+    "/dashboard/top-types?limit=8": {
+      "tempos_ms": [
+        10.754,
+        10.564,
+        11.046999999999999,
+        11.026,
+        11.046
+      ],
+      "min_ms": 10.564,
+      "mediana_ms": 11.026,
+      "max_ms": 11.046999999999999,
+      "meta_500ms_atingida": true
+    },
+    "/tickets?page_size=100": {
+      "tempos_ms": [
+        6.715,
+        7.622,
+        6.7299999999999995,
+        6.574,
+        7.816
+      ],
+      "min_ms": 6.574,
+      "mediana_ms": 6.7299999999999995,
+      "max_ms": 7.816,
+      "meta_500ms_atingida": true
+    }
+  }
+}
