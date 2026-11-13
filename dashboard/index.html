@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visão administrativa de chamados com dados de exemplo locais.">
+  <title>Thindesk Dashboard Administrativo</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <div class="topbar"><a class="brand" href="/" aria-label="Página inicial Thindesk"><span class="brand-icon" aria-hidden="true">t</span> thindesk <span class="brand-area">/ Administração</span></a><a class="api-link" href="/docs" target="_blank" rel="noopener">Documentação da API ↗</a></div>
+  <main>
+    <header class="page-header">
+      <div><p class="eyebrow">VISÃO OPERACIONAL</p><h1>Thindesk Dashboard Administrativo</h1><p class="subtitle">Acompanhe os chamados, a resolução e as demandas da equipe.</p></div>
+      <div class="header-meta"><span id="data-source" class="source-badge">Verificando fonte…</span><div class="refresh"><label><input type="checkbox" id="auto-refresh" checked> Auto (60s)</label><span id="updated-at">Aguardando atualização</span></div></div>
+    </header>
+
+    <form id="filters" class="panel filter-panel" aria-label="Filtros de chamados">
+      <div class="filter-heading"><h2>Filtros</h2><span id="date-range" class="muted">Período de abertura dos chamados</span></div>
+      <div class="filter-fields">
+        <label>Início<input type="date" id="start" name="start"></label>
+        <label>Fim<input type="date" id="end" name="end"></label>
+        <label>Status<select id="status" name="status"><option value="">Todos</option></select></label>
+        <label>Tipo<select id="type-id" name="type_id"><option value="">Todos</option></select></label>
+        <label>Agrupar por<select id="granularity" name="granularity"><option value="day">Dia</option><option value="week">Semana</option><option value="month" selected>Mês</option></select></label>
+        <div class="filter-actions"><button type="submit" id="apply">Aplicar</button><button type="button" id="clear" class="secondary">Limpar</button></div>
+      </div>
+    </form>
+
+    <div id="error" class="error-banner" role="alert" hidden><span id="error-message"></span><button type="button" id="retry" class="secondary">Tentar novamente</button></div>
+    <div id="loading" class="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Carregando…</div>
+    <div id="empty" class="empty-state panel" role="status" hidden><span aria-hidden="true">○</span><h2>Nenhum chamado encontrado para os filtros selecionados.</h2><p>Experimente outro período ou remova os filtros.</p></div>
+
+    <div id="content" aria-busy="false">
+      <section id="indicators" class="indicators" aria-label="Indicadores de chamados">
+        <article class="panel indicator"><p>Total</p><strong id="total">—</strong><span>Chamados no período</span></article>
+        <article class="panel indicator amber"><p>Abertos</p><strong id="abertos">—</strong><span>Aguardando atendimento</span></article>
+        <article class="panel indicator blue"><p>Em andamento</p><strong id="em_andamento">—</strong><span>Em atendimento</span></article>
+        <article class="panel indicator green"><p>Concluídos</p><strong id="concluidos">—</strong><span>Atendimentos finalizados</span></article>
+        <article class="panel indicator gray"><p>Cancelados</p><strong id="cancelados">—</strong><span>Chamados cancelados</span></article>
+        <article class="panel indicator"><p>Taxa de resolução (%)</p><strong id="taxa_resolucao_pct">—</strong><span>Concluídos / total</span></article>
+        <article class="panel indicator"><p>Tempo médio de resolução (h)</p><strong id="tempo_medio_resolucao_h">—</strong><span>Somente concluídos</span></article>
+      </section>
+
+      <section class="charts" aria-label="Gráficos dos chamados">
+        <article class="panel chart-panel full"><div class="section-heading"><div><h2>Chamados abertos × atendidos por período</h2><p>Atendidos = concluídos, contabilizados pela data de encerramento.</p></div><span class="chart-key"><i class="dot amber-dot"></i>Abertos <i class="dot green-dot"></i>Atendidos</span></div><div class="chart-container line-container"><canvas id="timeseries-chart" role="img" aria-label="Gráfico de linha com chamados abertos e atendidos"></canvas></div></article>
+        <article class="panel chart-panel"><div class="section-heading"><div><h2>Situação dos chamados</h2><p>Distribuição dos chamados abertos no período.</p></div></div><div class="chart-container"><canvas id="status-chart" role="img" aria-label="Gráfico de rosca com distribuição por status"></canvas></div></article>
+        <article class="panel chart-panel"><div class="section-heading"><div><h2>Tipos mais atendidos</h2><p>Volume por tipo · todos os status · até 8 tipos.</p></div></div><div class="chart-container"><canvas id="types-chart" role="img" aria-label="Gráfico de barras horizontais com ranking de tipos"></canvas></div></article>
+      </section>
+
+      <section class="panel tickets-panel" aria-labelledby="tickets-title"><div class="section-heading"><div><h2 id="tickets-title">Chamados e considerações técnicas</h2><p>Detalhes dos registros, do mais recente ao mais antigo.</p></div><span class="readonly-badge">Somente leitura</span></div><div class="table-scroll" tabindex="0" role="region" aria-label="Tabela de chamados com rolagem horizontal"><table><thead><tr><th scope="col">#</th><th scope="col">Título</th><th scope="col">Tipo</th><th scope="col">Status</th><th scope="col">Prioridade</th><th scope="col">Técnico</th><th scope="col">Considerações técnicas</th><th scope="col">Abertura</th></tr></thead><tbody id="tickets-body"><tr><td colspan="8" class="table-placeholder">Aguardando dados…</td></tr></tbody></table></div><div class="pagination"><span id="page-info">Página 0 de 0 · 0 chamados</span><div><button type="button" id="prev" class="secondary" aria-label="Página anterior" disabled>‹</button><button type="button" id="next" class="secondary" aria-label="Próxima página" disabled>›</button></div></div></section>
+    </div>
+    <footer>Fonte local · dados de exemplo para demonstração <span>Thindesk Dashboard · v1.0.0</span></footer>
+  </main>
+</body>
+</html>
