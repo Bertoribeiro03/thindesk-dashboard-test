@@ -1,0 +1,180 @@
+{
+  "data": "2026-11-13T22:56:22.101Z",
+  "navegador": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "verificacoes": [
+    {
+      "cenario": "Carga inicial e Chart.js real via CDN",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": "500",
+        "cards": 7,
+        "linhas": 10,
+        "fonte": "Dados de exemplo (local)",
+        "auto": true,
+        "atualizado": "Atualizado às 19:56:24",
+        "chartVersion": "4.4.1",
+        "graficos": 3,
+        "erro": null
+      }
+    },
+    {
+      "cenario": "Paginação",
+      "resultado": "APROVADO",
+      "observado": {
+        "pagina": 2,
+        "texto": "Página 2 de 50 · 500 chamados",
+        "anteriorHabilitado": true
+      }
+    },
+    {
+      "cenario": "Filtro Rede com agrupamento semanal e retorno à página 1",
+      "resultado": "APROVADO",
+      "observado": {
+        "pagina": 1,
+        "filtros": {
+          "type_id": "3"
+        },
+        "agrupamento": "week",
+        "total": "67",
+        "tipos": [
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede"
+        ],
+        "periodos": [
+          "2026-W20",
+          "2026-W21",
+          "2026-W22",
+          "2026-W23",
+          "2026-W24",
+          "2026-W25",
+          "2026-W26",
+          "2026-W27",
+          "2026-W28",
+          "2026-W29",
+          "2026-W30",
+          "2026-W31",
+          "2026-W32",
+          "2026-W33",
+          "2026-W34",
+          "2026-W35",
+          "2026-W36",
+          "2026-W37",
+          "2026-W38",
+          "2026-W39",
+          "2026-W40",
+          "2026-W41",
+          "2026-W42",
+          "2026-W43",
+          "2026-W44",
+          "2026-W45"
+        ]
+      }
+    },
+    {
+      "cenario": "Período invertido bloqueado sem requisição HTTP",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "A data inicial deve ser anterior à final.",
+        "requisicoesAdicionais": 0
+      }
+    },
+    {
+      "cenario": "Estado vazio e valor nulo",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": "0",
+        "vazioVisivel": true,
+        "media": "—",
+        "anteriorDesabilitado": true,
+        "proximoDesabilitado": true
+      }
+    },
+    {
+      "cenario": "Layout responsivo em 600 px",
+      "resultado": "APROVADO",
+      "observado": {
+        "largura": 600,
+        "larguraDocumento": 585,
+        "colunasGraficos": "553px",
+        "tabelaRolavel": true
+      }
+    },
+    {
+      "cenario": "Escape de conteúdo da API contra XSS",
+      "resultado": "APROVADO",
+      "observado": {
+        "elementosInjetados": 0,
+        "texto": "1<img src=x onerror=alert(1)><script>alert(1)</script>AbertoAlta<b>Ana</b><svg onload=alert(1)>05/01/2026, 08:00:00"
+      }
+    },
+    {
+      "cenario": "Tratamento de Chart.js indisponível",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Biblioteca de gráficos não carregada (verifique a conexão)."
+      }
+    },
+    {
+      "cenario": "Atualização automática real após 60 s",
+      "resultado": "APROVADO",
+      "observado": {
+        "consultasSummaryAntes": 6,
+        "consultasSummaryDepois": 7,
+        "desligadaAoFinal": true
+      }
+    },
+    {
+      "cenario": "Timeout real de 10 segundos",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Tempo de resposta da API esgotado."
+      }
+    },
+    {
+      "cenario": "Erro com API realmente parada",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Não foi possível conectar à API.",
+        "processoApiEncerrado": true
+      }
+    },
+    {
+      "cenario": "Recuperação pelo botão Tentar novamente",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": 500,
+        "erroVisivel": false
+      }
+    },
+    {
+      "cenario": "Tentar novamente refaz init quando faltam metadados",
+      "resultado": "APROVADO",
+      "observado": {
+        "metadadosCarregados": true,
+        "total": 500
+      }
+    }
+  ],
+  "versaoNavegador": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/157.0.8103.51",
+    "revision": "@653674df293788cf4932c40d914e9e15b41a2d31",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "jsVersion": "15.7.112.23"
+  },
+  "captura_desktop": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\dashboard_desktop_2026-11-13.png",
+  "captura_vazio": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\dashboard_vazio_2026-11-13.png",
+  "captura_600px": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\dashboard_600px_2026-11-13.png",
+  "captura_erro": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\dashboard_erro_2026-11-13.png",
+  "errosJavascript": [],
+  "resultado": "APROVADO",
+  "servidoresEncerrados": true
+}
