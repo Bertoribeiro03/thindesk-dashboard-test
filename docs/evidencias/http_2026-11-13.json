@@ -1,0 +1,717 @@
+{
+  "data": "2026-11-13T19:51:20.619056-03:00",
+  "fonte": "local_sqlite",
+  "respostas": {
+    "/health": {
+      "http": 200,
+      "tempo_s": 0.034392,
+      "corpo": {
+        "status": "ok",
+        "database": "ok",
+        "data_source": "local_sqlite"
+      }
+    },
+    "/meta/filters": {
+      "http": 200,
+      "tempo_s": 0.003023,
+      "corpo": {
+        "data": {
+          "statuses": [
+            {
+              "value": "aberto",
+              "label": "Aberto"
+            },
+            {
+              "value": "em_andamento",
+              "label": "Em andamento"
+            },
+            {
+              "value": "concluido",
+              "label": "Concluído"
+            },
+            {
+              "value": "cancelado",
+              "label": "Cancelado"
+            }
+          ],
+          "types": [
+            {
+              "id": 4,
+              "name": "Acesso/Senha"
+            },
+            {
+              "id": 6,
+              "name": "E-mail"
+            },
+            {
+              "id": 8,
+              "name": "ERP"
+            },
+            {
+              "id": 1,
+              "name": "Hardware"
+            },
+            {
+              "id": 5,
+              "name": "Impressora"
+            },
+            {
+              "id": 3,
+              "name": "Rede"
+            },
+            {
+              "id": 2,
+              "name": "Software"
+            },
+            {
+              "id": 7,
+              "name": "Telefonia"
+            }
+          ],
+          "date_range": {
+            "min": "2026-05-18",
+            "max": "2026-11-13"
+          }
+        }
+      }
+    },
+    "/dashboard/summary": {
+      "http": 200,
+      "tempo_s": 0.004069,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": {
+          "total": 500,
+          "abertos": 58,
+          "em_andamento": 59,
+          "concluidos": 352,
+          "cancelados": 31,
+          "tempo_medio_resolucao_h": 59.5,
+          "backlog": 117,
+          "taxa_resolucao_pct": 70.4
+        }
+      }
+    },
+    "/dashboard/timeseries?granularity=month": {
+      "http": 200,
+      "tempo_s": 0.004451,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "granularity": "month",
+        "data": [
+          {
+            "period": "2026-05",
+            "abertos": 39,
+            "atendidos": 24
+          },
+          {
+            "period": "2026-06",
+            "abertos": 80,
+            "atendidos": 65
+          },
+          {
+            "period": "2026-07",
+            "abertos": 81,
+            "atendidos": 49
+          },
+          {
+            "period": "2026-08",
+            "abertos": 92,
+            "atendidos": 63
+          },
+          {
+            "period": "2026-09",
+            "abertos": 86,
+            "atendidos": 54
+          },
+          {
+            "period": "2026-10",
+            "abertos": 89,
+            "atendidos": 68
+          },
+          {
+            "period": "2026-11",
+            "abertos": 33,
+            "atendidos": 29
+          }
+        ]
+      }
+    },
+    "/dashboard/status-distribution": {
+      "http": 200,
+      "tempo_s": 0.003167,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": [
+          {
+            "status": "aberto",
+            "label": "Aberto",
+            "count": 58,
+            "pct": 11.6
+          },
+          {
+            "status": "em_andamento",
+            "label": "Em andamento",
+            "count": 59,
+            "pct": 11.8
+          },
+          {
+            "status": "concluido",
+            "label": "Concluído",
+            "count": 352,
+            "pct": 70.4
+          },
+          {
+            "status": "cancelado",
+            "label": "Cancelado",
+            "count": 31,
+            "pct": 6.2
+          }
+        ]
+      }
+    },
+    "/dashboard/top-types?limit=8": {
+      "http": 200,
+      "tempo_s": 0.003678,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": [
+          {
+            "rank": 1,
+            "type_id": 4,
+            "type": "Acesso/Senha",
+            "count": 104,
+            "pct": 20.8
+          },
+          {
+            "rank": 2,
+            "type_id": 2,
+            "type": "Software",
+            "count": 104,
+            "pct": 20.8
+          },
+          {
+            "rank": 3,
+            "type_id": 1,
+            "type": "Hardware",
+            "count": 101,
+            "pct": 20.2
+          },
+          {
+            "rank": 4,
+            "type_id": 3,
+            "type": "Rede",
+            "count": 67,
+            "pct": 13.4
+          },
+          {
+            "rank": 5,
+            "type_id": 6,
+            "type": "E-mail",
+            "count": 49,
+            "pct": 9.8
+          },
+          {
+            "rank": 6,
+            "type_id": 5,
+            "type": "Impressora",
+            "count": 43,
+            "pct": 8.6
+          },
+          {
+            "rank": 7,
+            "type_id": 8,
+            "type": "ERP",
+            "count": 17,
+            "pct": 3.4
+          },
+          {
+            "rank": 8,
+            "type_id": 7,
+            "type": "Telefonia",
+            "count": 15,
+            "pct": 3.0
+          }
+        ]
+      }
+    },
+    "/tickets?page_size=2": {
+      "http": 200,
+      "tempo_s": 0.003474,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "items": [
+          {
+            "id": 412,
+            "title": "Chamado 412 - Acesso/Senha",
+            "type": "Acesso/Senha",
+            "status": "concluido",
+            "priority": "critica",
+            "technician": "Bruno Lima",
+            "technical_notes": "Cabo de rede reparado.",
+            "opened_at": "2026-11-13 15:09:45",
+            "closed_at": "2026-11-13 16:13:08"
+          },
+          {
+            "id": 226,
+            "title": "Chamado 226 - Software",
+            "type": "Software",
+            "status": "concluido",
+            "priority": "baixa",
+            "technician": "Bruno Lima",
+            "technical_notes": "Atualização aplicada.",
+            "opened_at": "2026-11-13 13:05:51",
+            "closed_at": "2026-11-13 17:10:07"
+          }
+        ],
+        "page": 1,
+        "page_size": 2,
+        "total": 500,
+        "pages": 250
+      }
+    },
+    "/dashboard/summary?status=aberto,em_andamento": {
+      "http": 200,
+      "tempo_s": 0.003598,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [
+            "aberto",
+            "em_andamento"
+          ],
+          "type_id": []
+        },
+        "data": {
+          "total": 117,
+          "abertos": 58,
+          "em_andamento": 59,
+          "concluidos": 0,
+          "cancelados": 0,
+          "tempo_medio_resolucao_h": null,
+          "backlog": 117,
+          "taxa_resolucao_pct": 0.0
+        }
+      }
+    },
+    "/dashboard/summary?type_id=3&start=2026-01-01&end=2026-12-31": {
+      "http": 200,
+      "tempo_s": 0.003648,
+      "corpo": {
+        "filters": {
+          "start": "2026-01-01",
+          "end": "2026-12-31",
+          "status": [],
+          "type_id": [
+            3
+          ]
+        },
+        "data": {
+          "total": 67,
+          "abertos": 5,
+          "em_andamento": 6,
+          "concluidos": 50,
+          "cancelados": 6,
+          "tempo_medio_resolucao_h": 63.1,
+          "backlog": 11,
+          "taxa_resolucao_pct": 74.6
+        }
+      }
+    },
+    "/dashboard/summary?start=2020-01-01&end=2020-01-31": {
+      "http": 200,
+      "tempo_s": 0.003228,
+      "corpo": {
+        "filters": {
+          "start": "2020-01-01",
+          "end": "2020-01-31",
+          "status": [],
+          "type_id": []
+        },
+        "data": {
+          "total": 0,
+          "abertos": 0,
+          "em_andamento": 0,
+          "concluidos": 0,
+          "cancelados": 0,
+          "tempo_medio_resolucao_h": null,
+          "backlog": 0,
+          "taxa_resolucao_pct": 0.0
+        }
+      }
+    },
+    "/dashboard/timeseries?granularity=week&type_id=3": {
+      "http": 200,
+      "tempo_s": 0.004044,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": [
+            3
+          ]
+        },
+        "granularity": "week",
+        "data": [
+          {
+            "period": "2026-W20",
+            "abertos": 4,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W21",
+            "abertos": 0,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W22",
+            "abertos": 7,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W23",
+            "abertos": 1,
+            "atendidos": 4
+          },
+          {
+            "period": "2026-W24",
+            "abertos": 6,
+            "atendidos": 4
+          },
+          {
+            "period": "2026-W25",
+            "abertos": 3,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W26",
+            "abertos": 2,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W27",
+            "abertos": 1,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W28",
+            "abertos": 1,
+            "atendidos": 0
+          },
+          {
+            "period": "2026-W29",
+            "abertos": 1,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W30",
+            "abertos": 2,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W31",
+            "abertos": 3,
+            "atendidos": 3
+          },
+          {
+            "period": "2026-W32",
+            "abertos": 1,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W33",
+            "abertos": 2,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W34",
+            "abertos": 3,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W35",
+            "abertos": 1,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W36",
+            "abertos": 2,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W37",
+            "abertos": 4,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W38",
+            "abertos": 0,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W39",
+            "abertos": 6,
+            "atendidos": 4
+          },
+          {
+            "period": "2026-W40",
+            "abertos": 6,
+            "atendidos": 5
+          },
+          {
+            "period": "2026-W41",
+            "abertos": 3,
+            "atendidos": 2
+          },
+          {
+            "period": "2026-W42",
+            "abertos": 3,
+            "atendidos": 1
+          },
+          {
+            "period": "2026-W43",
+            "abertos": 2,
+            "atendidos": 4
+          },
+          {
+            "period": "2026-W44",
+            "abertos": 1,
+            "atendidos": 0
+          },
+          {
+            "period": "2026-W45",
+            "abertos": 2,
+            "atendidos": 2
+          }
+        ]
+      }
+    },
+    "/dashboard/timeseries?granularity=day&start=2026-01-05&end=2026-01-07": {
+      "http": 200,
+      "tempo_s": 0.003509,
+      "corpo": {
+        "filters": {
+          "start": "2026-01-05",
+          "end": "2026-01-07",
+          "status": [],
+          "type_id": []
+        },
+        "granularity": "day",
+        "data": [
+          {
+            "period": "2026-01-05",
+            "abertos": 0,
+            "atendidos": 0
+          },
+          {
+            "period": "2026-01-06",
+            "abertos": 0,
+            "atendidos": 0
+          },
+          {
+            "period": "2026-01-07",
+            "abertos": 0,
+            "atendidos": 0
+          }
+        ]
+      }
+    },
+    "/dashboard/summary?start=2026-13-40": {
+      "http": 400,
+      "tempo_s": 0.001769,
+      "corpo": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Parâmetros inválidos.",
+          "details": [
+            {
+              "param": "start",
+              "msg": "Use uma data válida no formato AAAA-MM-DD."
+            }
+          ]
+        }
+      }
+    },
+    "/dashboard/summary?start=2026-02-01&end=2026-01-01": {
+      "http": 400,
+      "tempo_s": 0.001942,
+      "corpo": {
+        "error": {
+          "code": "INVALID_PERIOD",
+          "message": "A data inicial deve ser anterior à final.",
+          "details": null
+        }
+      }
+    },
+    "/dashboard/summary?start=2020-01-01&end=2026-01-01": {
+      "http": 400,
+      "tempo_s": 0.001997,
+      "corpo": {
+        "error": {
+          "code": "PERIOD_TOO_LONG",
+          "message": "O período não pode exceder 731 dias.",
+          "details": null
+        }
+      }
+    },
+    "/dashboard/summary?status=xpto": {
+      "http": 400,
+      "tempo_s": 0.001984,
+      "corpo": {
+        "error": {
+          "code": "INVALID_STATUS",
+          "message": "Status inválido.",
+          "details": {
+            "invalid": [
+              "xpto"
+            ],
+            "allowed": [
+              "aberto",
+              "em_andamento",
+              "concluido",
+              "cancelado"
+            ]
+          }
+        }
+      }
+    },
+    "/dashboard/summary?type_id=abc": {
+      "http": 400,
+      "tempo_s": 0.001978,
+      "corpo": {
+        "error": {
+          "code": "INVALID_TYPE_ID",
+          "message": "Informe IDs de tipo inteiros positivos válidos.",
+          "details": null
+        }
+      }
+    },
+    "/dashboard/summary?type_id=0": {
+      "http": 400,
+      "tempo_s": 0.002077,
+      "corpo": {
+        "error": {
+          "code": "INVALID_TYPE_ID",
+          "message": "Informe IDs de tipo inteiros positivos válidos.",
+          "details": null
+        }
+      }
+    },
+    "/dashboard/summary?type_id=-1": {
+      "http": 400,
+      "tempo_s": 0.002022,
+      "corpo": {
+        "error": {
+          "code": "INVALID_TYPE_ID",
+          "message": "Informe IDs de tipo inteiros positivos válidos.",
+          "details": null
+        }
+      }
+    },
+    "/dashboard/timeseries?granularity=year": {
+      "http": 400,
+      "tempo_s": 0.002127,
+      "corpo": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Parâmetros inválidos.",
+          "details": [
+            {
+              "param": "granularity",
+              "msg": "Escolha day, week ou month."
+            }
+          ]
+        }
+      }
+    },
+    "/dashboard/top-types?limit=0": {
+      "http": 400,
+      "tempo_s": 0.002048,
+      "corpo": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Parâmetros inválidos.",
+          "details": [
+            {
+              "param": "limit",
+              "msg": "Informe um inteiro entre 1 e 50."
+            }
+          ]
+        }
+      }
+    },
+    "/tickets?page=0": {
+      "http": 400,
+      "tempo_s": 0.002085,
+      "corpo": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Parâmetros inválidos.",
+          "details": [
+            {
+              "param": "page",
+              "msg": "Informe um inteiro maior ou igual a 1."
+            }
+          ]
+        }
+      }
+    },
+    "/nao-existe": {
+      "http": 404,
+      "tempo_s": 0.001832,
+      "corpo": {
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "Recurso não encontrado.",
+          "details": null
+        }
+      }
+    },
+    "503 /health porta 8001": {
+      "http": 503,
+      "tempo_s": 0.037992,
+      "corpo": {
+        "error": {
+          "code": "DATABASE_UNAVAILABLE",
+          "message": "Banco de dados indisponível.",
+          "details": null
+        }
+      }
+    }
+  },
+  "consistencia": {
+    "total": 500,
+    "soma_cards_status": 500,
+    "soma_rosca": 500,
+    "total_lista": 500
+  },
+  "resultado": "APROVADO",
+  "servidores_encerrados": true
+}

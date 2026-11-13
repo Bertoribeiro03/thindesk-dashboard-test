@@ -1,0 +1,91 @@
+Data: 2026-11-13T19:49:46.699934-03:00
+Diretório: C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api
+Comando: "C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api\.venv\Scripts\python.exe" -m pytest -v "--junitxml=C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\docs\evidencias\pytest_2026-11-13.xml"
+
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-8.3.3, pluggy-1.7.0 -- C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0
+collecting ... collected 58 items
+
+tests/test_api.py::test_T01_health PASSED                                [  1%]
+tests/test_api.py::test_T02_summary PASSED                               [  3%]
+tests/test_api.py::test_T03_status_csv PASSED                            [  5%]
+tests/test_api.py::test_T04_tipo_periodo PASSED                          [  6%]
+tests/test_api.py::test_T05_vazio PASSED                                 [  8%]
+tests/test_api.py::test_T06_data_invalida[2026-13-40] PASSED             [ 10%]
+tests/test_api.py::test_T06_data_invalida[ontem] PASSED                  [ 12%]
+tests/test_api.py::test_T06_data_invalida[20260105] PASSED               [ 13%]
+tests/test_api.py::test_T06_data_invalida[1700000000] PASSED             [ 15%]
+tests/test_api.py::test_T06_data_invalida[2026-01-05T00:00:00] PASSED    [ 17%]
+tests/test_api.py::test_T06_data_invalida[] PASSED                       [ 18%]
+tests/test_api.py::test_T07_periodo_invertido PASSED                     [ 20%]
+tests/test_api.py::test_T08_status_invalido PASSED                       [ 22%]
+tests/test_api.py::test_T09_tipo_invalido[abc] PASSED                    [ 24%]
+tests/test_api.py::test_T09_tipo_invalido[0] PASSED                      [ 25%]
+tests/test_api.py::test_T09_tipo_invalido[-1] PASSED                     [ 27%]
+tests/test_api.py::test_T09_tipo_invalido[1.5] PASSED                    [ 29%]
+tests/test_api.py::test_T09_tipo_invalido[1,,2] PASSED                   [ 31%]
+tests/test_api.py::test_T09_tipo_invalido[] PASSED                       [ 32%]
+tests/test_api.py::test_T09_tipo_invalido[1 OR 1=1] PASSED               [ 34%]
+tests/test_api.py::test_T10_serie_dia PASSED                             [ 36%]
+tests/test_api.py::test_T11_distribuicao PASSED                          [ 37%]
+tests/test_api.py::test_T12_ranking PASSED                               [ 39%]
+tests/test_api.py::test_T13_paginacao PASSED                             [ 41%]
+tests/test_api.py::test_T14_banco_inexistente[/health] PASSED            [ 43%]
+tests/test_api.py::test_T14_banco_inexistente[/meta/filters] PASSED      [ 44%]
+tests/test_api.py::test_T14_banco_inexistente[/dashboard/summary] PASSED [ 46%]
+tests/test_api.py::test_T14_banco_inexistente[/dashboard/timeseries] PASSED [ 48%]
+tests/test_api.py::test_T14_banco_inexistente[/dashboard/status-distribution] PASSED [ 50%]
+tests/test_api.py::test_T14_banco_inexistente[/dashboard/top-types] PASSED [ 51%]
+tests/test_api.py::test_T14_banco_inexistente[/tickets] PASSED           [ 53%]
+tests/test_api.py::test_T15_rota_inexistente PASSED                      [ 55%]
+tests/test_api.py::test_T16_periodo_longo PASSED                         [ 56%]
+tests/test_api.py::test_T17_serie_mes PASSED                             [ 58%]
+tests/test_api.py::test_T18_serie_semana PASSED                          [ 60%]
+tests/test_api.py::test_T19_pagina_fora[4] PASSED                        [ 62%]
+tests/test_api.py::test_T19_pagina_fora[999999999999999999999] PASSED    [ 63%]
+tests/test_api.py::test_T20_tipo_inexistente[999] PASSED                 [ 65%]
+tests/test_api.py::test_T20_tipo_inexistente[999999999999999999999] PASSED [ 67%]
+tests/test_api.py::test_T21_dashboard PASSED                             [ 68%]
+tests/test_api.py::test_T22_meta PASSED                                  [ 70%]
+tests/test_api.py::test_T23_normalizacao PASSED                          [ 72%]
+tests/test_api.py::test_T24_ordem_validacoes PASSED                      [ 74%]
+tests/test_api.py::test_T25_encerramento_e_fim_inclusivo PASSED          [ 75%]
+tests/test_api.py::test_T26_consistencia PASSED                          [ 77%]
+tests/test_api.py::test_T27_somente_leitura_e_indices PASSED             [ 79%]
+tests/test_api.py::test_T28_erro_interno PASSED                          [ 81%]
+tests/test_api.py::test_T29_http_e_arquivo_ausente PASSED                [ 82%]
+tests/test_api.py::test_T30_limites[/tickets-params0] PASSED             [ 84%]
+tests/test_api.py::test_T30_limites[/tickets-params1] PASSED             [ 86%]
+tests/test_api.py::test_T30_limites[/tickets-params2] PASSED             [ 87%]
+tests/test_api.py::test_T30_limites[/tickets-params3] PASSED             [ 89%]
+tests/test_api.py::test_T30_limites[/dashboard/top-types-params4] PASSED [ 91%]
+tests/test_api.py::test_T31_seed_deterministico PASSED                   [ 93%]
+tests/test_api.py::test_T32_base_vazia PASSED                            [ 94%]
+tests/test_api.py::test_T33_config_dinamica PASSED                       [ 96%]
+tests/test_api.py::test_T34_sql_parametrizado PASSED                     [ 98%]
+tests/test_api.py::test_T35_openapi PASSED                               [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\starlette\testclient.py:40
+  C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api\.venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+.venv\Lib\site-packages\starlette\_utils.py:39: 19 warnings
+tests/test_api.py: 152 warnings
+  C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api\.venv\Lib\site-packages\starlette\_utils.py:39: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    return asyncio.iscoroutinefunction(obj) or (callable(obj) and asyncio.iscoroutinefunction(obj.__call__))
+
+.venv\Lib\site-packages\fastapi\routing.py:233: 15 warnings
+  C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\api\.venv\Lib\site-packages\fastapi\routing.py:233: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    is_coroutine = asyncio.iscoroutinefunction(dependant.call)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\BERTO\Downloads\dashboard administrativo\thindesk-dashboard\docs\evidencias\pytest_2026-11-13.xml -
+====================== 58 passed, 187 warnings in 3.47s =======================
+
+Código de saída: 0
