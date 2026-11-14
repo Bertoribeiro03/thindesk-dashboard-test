@@ -55,7 +55,7 @@ Registro da estabilização em 13/11/2026: as três features foram commitadas e 
 
 ## Publicação no GitHub
 
-O `gh` não está disponível no PATH deste ambiente e o projeto começou sem repositório/remoto. Não há autenticação do CLI verificada. A publicação deve ocorrer somente quando `gh auth status` estiver OK ou houver remoto autorizado configurado; **não foi publicada nenhuma cópia no GitHub pelo agente**.
+O `gh` não está disponível no PATH deste ambiente e o projeto começou sem repositório/remoto. Não há autenticação do CLI verificada. A publicação deve ocorrer somente quando `gh auth status` estiver OK ou houver remoto autorizado configurado; **o projeto não foi publicado no GitHub**.
 
 Para publicar futuramente, com GitHub CLI instalado e autenticado, execute na raiz do repositório:
 

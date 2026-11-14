@@ -80,4 +80,4 @@ docs/ferramentas/ verificações reproduzíveis sem dependências adicionais
 
 ## Pendências
 
-Integração com o Thindesk real, autenticação (OAuth/SSO ou token atrás de proxy reverso), distribuição local de Chart.js em `dashboard/vendor/` para ambientes sem internet e gravação do vídeo. O vídeo não foi gravado pelo agente.
+Integração com o Thindesk real, autenticação (OAuth/SSO ou token atrás de proxy reverso), distribuição local de Chart.js em `dashboard/vendor/` para ambientes sem internet e gravação do vídeo. O vídeo ainda não foi gravado.

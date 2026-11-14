@@ -1,6 +1,6 @@
 # Roteiro de apresentação — até 3 minutos
 
-**O vídeo não foi gravado pelo agente.** Este é o roteiro para gravação pelo responsável. As evidências existentes são arquivos de teste, respostas HTTP e capturas headless reais. Prepare a API com o seed de 500 registros, deixe o terminal do Uvicorn acessível e abra o dashboard e `/docs` antes de começar.
+**O vídeo ainda não foi gravado.** Este é o roteiro para gravação pelo responsável. As evidências existentes são arquivos de teste, respostas HTTP e capturas headless reais. Prepare a API com o seed de 500 registros, deixe o terminal do Uvicorn acessível e abra o dashboard e `/docs` antes de começar.
 
 | Tempo | Tela / ação | Fala sugerida |
 | --- | --- | --- |

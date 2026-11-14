@@ -110,7 +110,7 @@ erDiagram
 
 ## Pendências conhecidas
 
-Sem integração com o Thindesk real; sem autenticação; CDN requer internet; vídeo não gravado pelo agente. Publicação e situação das branches estão em [GITFLOW.md](GITFLOW.md). Evidências reais e limites das medições estão em [TESTES.md](TESTES.md).
+Sem integração com o Thindesk real; sem autenticação; CDN requer internet; vídeo não gravado. Publicação e situação das branches estão em [GITFLOW.md](GITFLOW.md). Evidências reais e limites das medições estão em [TESTES.md](TESTES.md).
 
 ## Referências técnicas consultadas
 

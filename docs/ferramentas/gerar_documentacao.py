@@ -198,7 +198,7 @@ O Chrome instalado foi controlado por CDP com Node/WebSocket nativo, sem pacote 
     text += f"""
 O ciclo automático aguardou 60 segundos reais. O timeout reteve as requisições via CDP por 10 segundos reais. O erro de conexão foi produzido encerrando o processo Uvicorn próprio enquanto a página permaneceu aberta; depois o processo foi reiniciado e o botão de retry recuperou os dados. O retry de init foi verificado bloqueando as chamadas de metadados na navegação inicial. O cenário XSS usou valores maliciosos de teste no renderer e confirmou zero elementos HTML injetados.
 
-Capturas reais, também inspecionadas visualmente pelo agente:
+Capturas reais revisadas visualmente:
 
 - [Desktop](evidencias/dashboard_desktop_{STAMP}.png)
 - [Layout de 600 px](evidencias/dashboard_600px_{STAMP}.png): sem transbordamento do documento; tabela rola dentro do contêiner e gráficos ficam em uma coluna.
@@ -226,11 +226,11 @@ As ferramentas de QA requerem portas 8000–8002 livres e encerram somente proce
 
 ## Limitações e checklist complementar
 
-- [ ] Integração e testes com Thindesk real — **não executados pelo agente**: fonte indisponível; depende de acesso autorizado e mapeamento.
-- [ ] Validação com usuários reais e tecnologias assistivas — **não executada pelo agente**.
-- [ ] Testes de concorrência, carga prolongada e homologação de infraestrutura — **não executados pelo agente**.
+- [ ] Integração e testes com Thindesk real — **não executados**: fonte indisponível; depende de acesso autorizado e mapeamento.
+- [ ] Validação com usuários reais e tecnologias assistivas — **não executada**.
+- [ ] Testes de concorrência, carga prolongada e homologação de infraestrutura — **não executados**.
 - [ ] Publicação e CI remoto — ver [GITFLOW.md](GITFLOW.md); nenhuma publicação deve ser inferida dos testes locais.
-- [ ] Gravação do vídeo — **não executada pelo agente**.
+- [ ] Gravação do vídeo — **não executada**.
 
 Sem autenticação nesta versão; recomendar OAuth/SSO ou token atrás de proxy reverso. Chart.js depende de internet; alternativa pendente em `dashboard/vendor/`. A suíte aprovada com warnings não prova compatibilidade de todas as versões futuras das transitivas; o ambiente efetivo foi registrado para auditoria.
 """
