@@ -1,5 +1,7 @@
 # Testes e evidências reais
 
+> Registro da implementação anterior em Python. Os testes e as evidências da aplicação Spring Boot/Thymeleaf estão em [TESTES_SPRING.md](TESTES_SPRING.md). As saídas históricas abaixo foram preservadas.
+
 ## Ambiente e execução
 
 Execução em **2026-11-13**, Windows, Python 3.14.7, SQLite da biblioteca padrão, ambiente virtual em `api/.venv`. As quatro versões diretas são as exigidas; versões transitivas e plataforma estão em [ambiente_2026-11-13.json](evidencias/ambiente_2026-11-13.json).

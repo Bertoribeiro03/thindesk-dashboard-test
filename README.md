@@ -1,83 +1,108 @@
 # Thindesk Dashboard Administrativo
 
-Dashboard interno de leitura com FastAPI, SQLite e HTML/CSS/JavaScript puro. Oferece indicadores, três gráficos, filtros de período/status/tipo e consulta paginada com considerações técnicas. Interface e API compartilham a mesma origem, sem CORS.
+Aplicação Java 21 com **Spring Boot e Thymeleaf** para acompanhar chamados técnicos, indicadores e considerações de atendimento. O projeto inclui dashboard, gestão de chamados, clientes, horários, catálogos e API JSON, servidos na mesma origem.
 
-**Os dados são EXEMPLOS locais. Não há conexão com o Thindesk real.** A fonte utilizada é `THINDESK_DATA_SOURCE=local_sqlite`, identificada também no dashboard e em `/api/v1/health`. Não há autenticação; mantenha a execução em loopback durante a demonstração.
+**A fonte padrão é SQLite local com dados de EXEMPLO (`local_sqlite`). Não há conexão ativa com o Thindesk de produção ou com o MongoDB mencionado no ZIP.** O logo, a estrutura de navegação e os fluxos de cadastro foram integrados a partir de `thindesk.zip`; veja [origem e correções](docs/MIGRACAO_SPRING.md).
 
 ## Pré-requisitos
 
-- Python 3.10 ou superior, com `sqlite3` e `venv`; Git para reproduzir o fluxo de branches.
-- Internet para instalar as quatro dependências diretas e carregar Chart.js 4.4.1 pela CDN. A interface Swagger em `/docs` também usa recursos externos.
-- curl para repetir as evidências HTTP. Node 22+ e Chrome/Edge headless são opcionais e usados apenas pela ferramenta de verificação do dashboard, sem pacotes npm.
+- JDK 21 e `JAVA_HOME` apontando para o JDK.
+- Internet na primeira execução para baixar Maven e dependências. O Maven Wrapper está incluído; não é necessário instalar Maven globalmente.
+- Internet para Chart.js 4.4.1 via CDN. CSS, JavaScript de navegação e logo são locais.
 
-## Instalação e configuração
+## Executar
 
-No PowerShell, a partir desta pasta:
-
-```powershell
-cd api
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-$env:THINDESK_DB_PATH = 'data/thindesk.db'
-$env:THINDESK_DATA_SOURCE = 'local_sqlite'
-```
-
-Se a política local impedir a ativação, use diretamente `.\.venv\Scripts\python.exe` nos comandos. Não é necessário alterar a política do sistema. As únicas dependências diretas estão em [requirements.txt](api/requirements.txt); o pip instala também as dependências transitivas delas.
-
-Em Bash, a ativação é `source .venv/bin/activate` e a configuração é `export THINDESK_DB_PATH=data/thindesk.db THINDESK_DATA_SOURCE=local_sqlite`.
-
-[.env.example](.env.example) documenta as variáveis; a aplicação **não carrega `.env` automaticamente**, pois não utiliza bibliotecas extras. Exporte as variáveis no terminal ou configure-as no processo/serviço. Caminhos relativos do banco são sempre relativos a `api/`, independentemente do diretório de execução. Não versione segredos.
-
-## Gerar dados e executar
-
-Dentro de `api/`, com o ambiente ativo:
+No PowerShell, a partir da raiz `thindesk-dashboard/`:
 
 ```powershell
-python -m app.seed
-python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+.\mvnw.cmd spring-boot:run
 ```
 
-O seed **substitui as tabelas do banco configurado** por 500 chamados de exemplo, distribuídos em 180 dias. Use um arquivo exclusivo de demonstração. `python -m app.seed --n 10000 --days 180` permite outro volume. O gerador usa `random.Random(42)`; fixando o instante `now` na função `seed`, os registros são idênticos entre execuções. Na CLI, as datas se deslocam em relação ao instante de execução.
+Em Linux/macOS, use `sh mvnw spring-boot:run`. O backend usa, por padrão, `api/data/thindesk.db`. Se já existir, seus chamados são preservados. Se não existir, o schema é criado e o dashboard apresenta o estado vazio.
 
-- Dashboard: <http://localhost:8000>
-- Documentação interativa: <http://localhost:8000/docs>
-- Saúde: <http://localhost:8000/api/v1/health>
-- OpenAPI: <http://localhost:8000/openapi.json>
+- Dashboard: <http://localhost:8080>
+- Chamados: <http://localhost:8080/chamados>
+- Clientes: <http://localhost:8080/clientes>
+- Horários: <http://localhost:8080/ajustes-horarios>
+- Documentação e consulta interativa: <http://localhost:8080/docs>
+- Especificação: <http://localhost:8080/openapi.json>
+- Saúde: <http://localhost:8080/api/v1/health>
 
-Pare com `Ctrl+C`. O banco não é criado pela API: um caminho inexistente resulta em 503 até o seed ser executado. A aplicação abre conexões de leitura com `mode=ro`.
-
-## Testes e evidências
+Para inserir 500 exemplos **somente em uma base vazia**:
 
 ```powershell
-# Dentro de api/, com o ambiente ativo
-python -m pytest -v
-
-# A partir da raiz, usando explicitamente o ambiente local
-.\api\.venv\Scripts\python.exe docs/ferramentas/executar_pytest.py
-.\api\.venv\Scripts\python.exe docs/ferramentas/verificar_http.py
-node docs/ferramentas/verificar_dashboard.mjs
+$env:THINDESK_SEED_EXAMPLE = 'true'
+.\mvnw.cmd spring-boot:run
 ```
 
-A ferramenta HTTP recria o banco de exemplo, cria um banco separado com 10.000 registros em `api/.runtime/`, usa temporariamente as portas 8000–8002 e encerra os processos que iniciou. A ferramenta de navegador também usa a porta 8000, abre somente uma instância headless própria e aguarda um ciclo real de 60 segundos. Execute essas ferramentas sem outro servidor nessas portas. Saídas reais, respostas completas, medições, JUnit e capturas estão em [docs/evidencias/](docs/evidencias/).
+O seed Java não apaga nem substitui registros existentes. Pare o servidor com `Ctrl+C`.
+
+## Configuração
+
+[.env.example](.env.example) descreve as variáveis. O arquivo `.env` não é carregado automaticamente: exporte os valores no terminal ou configure o processo/IDE.
+
+| Variável | Padrão | Uso |
+| --- | --- | --- |
+| `THINDESK_DB_PATH` | `api/data/thindesk.db` | Caminho relativo à raiz de execução, ou absoluto |
+| `THINDESK_DATA_SOURCE` | `local_sqlite` | Fonte implementada nesta versão |
+| `THINDESK_INITIALIZE` | `true` | Criação idempotente de tabelas/índices e migração de campos ausentes |
+| `THINDESK_SEED_EXAMPLE` | `false` | Gera exemplos apenas se não houver chamados |
+| `SERVER_ADDRESS` | `127.0.0.1` | Endereço de escuta |
+| `SERVER_PORT` | `8080` | Porta HTTP |
+| `SERVER_CONTEXT_PATH` | vazio | Prefixo opcional, por exemplo `/central` |
+| `THINDESK_SECURITY_ENABLED` | `false` | Habilita autenticação por formulário |
+| `THINDESK_USERNAME` / `THINDESK_PASSWORD` | vazios | Obrigatórios quando o login é habilitado |
+| `THYMELEAF_CACHE` | `true` | Cache dos templates |
+
+Não versione segredos. A configuração do MongoDB e a senha contidas no ZIP não foram copiadas. Se habilitar login, forneça usuário/senha por ambiente e abra `/login`; a aplicação falha na inicialização se os valores estiverem ausentes. O modo sem login destina-se à demonstração local, com escuta em loopback.
+
+CSRF está habilitado inclusive no modo local. Os formulários Thymeleaf enviam o token automaticamente. Operações JSON POST/PUT/DELETE exigem o token da sessão no header `X-CSRF-TOKEN`; o formulário HTML renderizado fornece o campo `_csrf`. Exclusão e cancelamento não são executados por GET.
+
+## Testes e empacotamento
+
+```powershell
+.\mvnw.cmd -B -ntp verify
+java -jar target/thindesk-1.1.0-SNAPSHOT.jar
+```
+
+Os testes Java usam bancos temporários próprios em `target/test-data/`; não modificam o banco da aplicação. Cobrem os indicadores, séries, filtros, erros, templates, estáticos, formulários, persistência, seed, CSRF e autenticação.
+
+A verificação visual opcional usa Node 22+ e Chrome/Edge já instalado, sem pacotes npm:
+
+```powershell
+node docs/ferramentas/verificar_spring.mjs
+```
+
+Ela exige `mvnw verify` concluído e porta 8081 livre, inicia um JAR próprio sob `/central` e um banco isolado, testa o navegador e encerra os processos iniciados. Resultados reais da migração: [TESTES_SPRING.md](docs/TESTES_SPRING.md).
 
 ## Estrutura
 
 ```text
-api/app/         rotas, filtros, repositório SQL, conexão, configuração e seed
-api/tests/       testes isolados com SQLite temporário
-dashboard/       index.html, styles.css, app.js; servido pela API
-docs/            análise, contrato da API, testes, GitFlow e apresentação
-docs/evidencias/ saídas reais e capturas do navegador
-docs/ferramentas/ verificações reproduzíveis sem dependências adicionais
+pom.xml, mvnw, mvnw.cmd, .mvn/wrapper/  build Maven
+src/main/java/com/pfc/                backend, serviços, rotas MVC e REST
+src/main/resources/templates/        layout e páginas Thymeleaf
+src/main/resources/static/           CSS, JavaScript e logo
+src/main/resources/api/openapi.json  contrato OpenAPI
+src/test/java/com/pfc/                testes Java
+docs/                                análise, API, migração e evidências
+api/, dashboard/                     implementação Python/HTML anterior preservada
 ```
 
-- [Análise e arquitetura](docs/ANALISE_PROJETO.md)
-- [Contrato e exemplos reais da API](docs/API.md)
-- [Testes e desempenho medido](docs/TESTES.md)
-- [GitFlow e publicação](docs/GITFLOW.md)
-- [Roteiro de apresentação de até 3 minutos](docs/ROTEIRO_APRESENTACAO.md)
+## Documentação
 
-## Pendências
+- [Migração, análise do ZIP e decisões técnicas](docs/MIGRACAO_SPRING.md)
+- [API Spring e rotas das páginas](docs/API_SPRING.md)
+- [Testes e evidências Spring](docs/TESTES_SPRING.md)
+- [Análise funcional e modelagem inicial](docs/ANALISE_PROJETO.md)
+- [GitFlow](docs/GITFLOW.md)
+- [Roteiro de apresentação](docs/ROTEIRO_APRESENTACAO.md)
 
-Integração com o Thindesk real, autenticação (OAuth/SSO ou token atrás de proxy reverso), distribuição local de Chart.js em `dashboard/vendor/` para ambientes sem internet e gravação do vídeo. O vídeo ainda não foi gravado.
+## Implementação anterior
+
+O código Python em `api/` e o dashboard original em `dashboard/` foram preservados; as evidências datadas de 13/11/2026 referem-se a essa versão. Não é necessário iniciar FastAPI junto de Spring Boot. Para executar apenas a suíte anterior: `cd api` e `.\.venv\Scripts\python.exe -m pytest -v` (após instalar `api/requirements.txt` em um ambiente virtual).
+
+No backend Python, caminhos relativos do banco continuam relativos a `api/`, ao contrário do backend Java. Para comparar servidores ou executar o seed antigo, use um arquivo separado; o seed Python substitui as tabelas do arquivo selecionado. Os documentos `API.md` e `TESTES.md` preservam o registro da versão anterior.
+
+## Limitações e pendências
+
+Integração MongoDB/Thindesk de produção depende de configuração autorizada e mapeamento dos campos/datas; o ZIP sozinho não comprova conexão real. Chart.js exige internet. O login local não implementa SSO nem múltiplos perfis de usuário. O vídeo de apresentação permanece pendente. As alterações desta migração são locais até publicação explícita no GitHub.

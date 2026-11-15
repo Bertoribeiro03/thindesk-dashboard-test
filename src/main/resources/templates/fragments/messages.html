@@ -1,0 +1,4 @@
+<div xmlns:th="http://www.thymeleaf.org">
+  <div th:fragment="success" th:if="${success}" class="success-banner" role="status" th:text="${success}"></div>
+  <div th:fragment="formErrors" th:if="${#fields.hasAnyErrors()}" class="form-errors" role="alert"><strong>Verifique os dados informados.</strong><ul><li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li></ul></div>
+</div>

@@ -1,0 +1,3 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(${catalogTitle}, ${catalogActive}, ~{::content}, ~{::scripts})}">
+<body><div th:fragment="content"><header class="management-heading"><div><p class="eyebrow">CONSULTA</p><h1 th:text="${catalogTitle}"></h1><p class="subtitle" th:text="${catalogDescription}"></p></div></header><section class="panel catalog-panel"><ul><li th:each="entry : ${entries}" th:text="${entry}"></li></ul><p th:if="${#lists.isEmpty(entries)}" class="muted">Nenhum registro encontrado.</p></section></div><th:block th:fragment="scripts"></th:block></body></html>

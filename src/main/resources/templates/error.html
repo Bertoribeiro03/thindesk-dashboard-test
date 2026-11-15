@@ -1,0 +1,3 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page('Erro', '', ~{::content}, ~{::scripts})}">
+<body><div th:fragment="content" class="panel error-page"><p class="eyebrow" th:text="|ERRO ${errorStatus ?: 500}|"></p><h1>Não foi possível abrir esta página</h1><p th:text="${errorMessage ?: 'Tente novamente em alguns instantes.'}"></p><a class="button" th:href="@{/}">Voltar ao dashboard</a></div><th:block th:fragment="scripts"></th:block></body></html>

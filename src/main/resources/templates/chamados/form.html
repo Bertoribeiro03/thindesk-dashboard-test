@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page('Chamado', 'chamados', ~{::content}, ~{::scripts})}">
+<body><div th:fragment="content">
+  <header class="management-heading"><div><p class="eyebrow">ATENDIMENTO</p><h1 th:text="${editId == null ? 'Novo chamado' : 'Editar chamado'}"></h1><p class="subtitle">Registre a demanda e mantenha as informações técnicas atualizadas.</p></div><a class="button secondary" th:href="@{/chamados}">Voltar</a></header>
+  <form class="panel management-form" th:action="${editId == null} ? @{/chamados/novo} : @{/chamados/atualizar/{id}(id=${editId})}" th:object="${chamado}" method="post">
+    <div th:replace="~{fragments/messages :: formErrors}"></div>
+    <label class="span-full" for="descricao">Descrição<input id="descricao" th:field="*{descricao}" maxlength="250" required></label>
+    <label for="status">Status<select id="status" th:field="*{status}"><option th:each="entry : ${statusLabels}" th:value="${entry.key}" th:text="${entry.value}"></option></select></label>
+    <label for="tipo">Tipo<select id="tipo" th:field="*{tipo}" required><option value="">Selecione um tipo</option><option th:each="type : ${types}" th:value="${type.name}" th:text="${type.name}"></option></select></label>
+    <label for="prioridade">Prioridade<select id="prioridade" th:field="*{prioridade}"><option value="baixa">Baixa</option><option value="media">Média</option><option value="alta">Alta</option><option value="critica">Crítica</option></select></label>
+    <label for="tecnico">Técnico<input id="tecnico" th:field="*{tecnico}" maxlength="120"></label>
+    <label class="span-full" for="usuario">Usuário solicitante<input id="usuario" th:field="*{usuario}" maxlength="120"></label>
+    <label class="span-full" for="consideracoesTecnicas">Considerações técnicas<textarea id="consideracoesTecnicas" th:field="*{consideracoesTecnicas}" rows="5" maxlength="4000"></textarea></label>
+    <div class="span-full form-actions"><button type="submit">Salvar chamado</button><a class="button secondary" th:href="@{/chamados}">Voltar à lista</a></div>
+  </form>
+</div><th:block th:fragment="scripts"></th:block></body></html>

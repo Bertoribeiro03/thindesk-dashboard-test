@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page('Horários', 'horarios', ~{::content}, ~{::scripts})}">
+<body><div th:fragment="content">
+  <header class="management-heading"><div><p class="eyebrow">CONFIGURAÇÕES</p><h1>Horários de atendimento</h1><p class="subtitle">Organize os períodos de atendimento de cada setor.</p></div></header>
+  <div th:replace="~{fragments/messages :: success}"></div>
+  <form class="panel management-form schedule-form" th:action="@{/ajustes-horarios/salvar}" th:object="${novoHorario}" method="post">
+    <input type="hidden" th:field="*{id}"><div th:replace="~{fragments/messages :: formErrors}"></div>
+    <label for="setor">Setor<input id="setor" th:field="*{setor}" maxlength="120" required></label>
+    <label for="diaSemana">Dia da semana<select id="diaSemana" th:field="*{diaSemana}" required><option value="">Selecione</option><option th:each="day : ${days}" th:value="${day}" th:text="${day}"></option></select></label>
+    <label for="horarioInicio">Início<input id="horarioInicio" type="time" th:field="*{horarioInicio}" required></label>
+    <label for="horarioFim">Fim<input id="horarioFim" type="time" th:field="*{horarioFim}" required></label>
+    <div class="span-full form-actions"><button type="submit">Salvar horário</button><a th:if="${novoHorario.id != null}" class="button secondary" th:href="@{/ajustes-horarios}">Cancelar edição</a></div>
+  </form>
+  <section class="panel cadastro-table"><div class="table-scroll"><table><thead><tr><th>Setor</th><th>Dia</th><th>Início</th><th>Fim</th><th>Ações</th></tr></thead><tbody>
+    <tr th:each="horario : ${horarios}"><td th:text="${horario.setor}"></td><td th:text="${horario.diaSemana}"></td><td th:text="${horario.horarioInicio}"></td><td th:text="${horario.horarioFim}"></td><td><div class="row-actions"><a class="button secondary small" th:href="@{/ajustes-horarios/editar/{id}(id=${horario.id})}">Editar</a><form th:action="@{/ajustes-horarios/deletar/{id}(id=${horario.id})}" method="post"><button class="secondary danger small" type="submit">Excluir</button></form></div></td></tr>
+    <tr th:if="${#lists.isEmpty(horarios)}"><td colspan="5" class="table-placeholder">Nenhum horário cadastrado.</td></tr>
+  </tbody></table></div></section>
+</div><th:block th:fragment="scripts"></th:block></body></html>

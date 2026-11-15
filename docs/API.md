@@ -1,5 +1,7 @@
 # API — versão 1.0.0
 
+> Registro da implementação anterior em FastAPI. A aplicação principal agora usa Spring Boot na porta 8080; consulte [API_SPRING.md](API_SPRING.md) para a versão atual. Exemplos e evidências abaixo preservam a execução original de 13/11/2026.
+
 ## Execução local e contrato
 
 Siga a instalação e o seed em [README.md](../README.md). Dentro de `api/`, execute `python -m uvicorn app.main:app --host 127.0.0.1 --port 8000`. Base URL: `http://localhost:8000/api/v1`. Swagger UI em `/docs`; especificação em `/openapi.json`. Título: **Thindesk Dashboard API**. A fonte é `local_sqlite`, com dados de **EXEMPLO**. Não há acesso ao Thindesk real nem autenticação.

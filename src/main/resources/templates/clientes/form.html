@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page('Cliente', 'clientes', ~{::content}, ~{::scripts})}">
+<body><div th:fragment="content">
+  <header class="management-heading"><div><p class="eyebrow">CADASTROS</p><h1 th:text="${editId == null ? 'Novo cliente' : 'Editar cliente'}"></h1><p class="subtitle">Informe os dados de contato e o setor do cliente.</p></div><a class="button secondary" th:href="@{/clientes}">Voltar</a></header>
+  <form class="panel management-form" th:action="${editId == null} ? @{/clientes/novo} : @{/clientes/editar/{id}(id=${editId})}" th:object="${cliente}" method="post">
+    <div th:replace="~{fragments/messages :: formErrors}"></div>
+    <label class="span-full" for="nome">Nome<input id="nome" th:field="*{nome}" maxlength="120" required></label>
+    <label for="telefone">Telefone<input id="telefone" type="tel" th:field="*{telefone}" maxlength="40" required></label>
+    <label for="setor">Setor<input id="setor" th:field="*{setor}" maxlength="120" required></label>
+    <div class="span-full form-actions"><button type="submit">Salvar cliente</button><a class="button secondary" th:href="@{/clientes}">Voltar à lista</a></div>
+  </form>
+</div><th:block th:fragment="scripts"></th:block></body></html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" th:fragment="page(title, active, content, scripts)">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${title} + ' · Thindesk'">Thindesk</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body th:attr="data-api-base=@{/api/v1}">
+  <div class="application-layout">
+    <aside th:replace="~{fragments/sidebar :: sidebar(${active})}"></aside>
+    <div class="page-shell">
+      <header class="application-topbar">
+        <button id="sidebar-toggle" class="secondary menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu">☰</button>
+        <span class="breadcrumb">Thindesk <span>/</span> <strong th:text="${title}">Administração</strong></span>
+        <a th:href="@{/docs}">API e documentação ↗</a>
+      </header>
+      <main id="page-main"><div th:replace="${content}"></div></main>
+      <footer class="application-footer"><span>Thindesk · Central de atendimento</span><span>Gestão de chamados</span></footer>
+    </div>
+  </div>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Fechar menu" hidden></button>
+  <script defer th:src="@{/js/script.js}"></script>
+  <th:block th:replace="${scripts}"></th:block>
+</body>
+</html>

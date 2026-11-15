@@ -1,0 +1,15 @@
+<aside xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar(active)" id="sidebar" class="sidebar">
+  <a class="sidebar-brand" th:href="@{/}" aria-label="Thindesk: início"><img th:src="@{/images/logo.png}" alt="Thindesk Service Manager" width="150" height="150"></a>
+  <p class="sidebar-caption">CENTRAL DE ATENDIMENTO</p>
+  <nav aria-label="Menu principal">
+    <a th:href="@{/}" th:classappend="${active == 'dashboard'} ? 'selected'" th:attr="aria-current=${active == 'dashboard' ? 'page' : null}"><span aria-hidden="true">▦</span> Dashboard</a>
+    <a th:href="@{/chamados}" th:classappend="${active == 'chamados'} ? 'selected'"><span aria-hidden="true">☷</span> Chamados</a>
+    <a th:href="@{/clientes}" th:classappend="${active == 'clientes'} ? 'selected'"><span aria-hidden="true">♙</span> Clientes</a>
+    <p class="nav-caption">CONFIGURAÇÕES</p>
+    <a th:href="@{/tecnicos}" th:classappend="${active == 'tecnicos'} ? 'selected'"><span aria-hidden="true">♧</span> Técnicos</a>
+    <a th:href="@{/tipo-chamado}" th:classappend="${active == 'tipos'} ? 'selected'"><span aria-hidden="true">◇</span> Tipos de chamado</a>
+    <a th:href="@{/ajustes-horarios}" th:classappend="${active == 'horarios'} ? 'selected'"><span aria-hidden="true">◷</span> Horários</a>
+    <a th:href="@{/docs}" th:classappend="${active == 'docs'} ? 'selected'"><span aria-hidden="true">⌘</span> API e documentação</a>
+  </nav>
+  <div class="sidebar-bottom"><span>Gestão administrativa</span><form th:if="${securityEnabled}" th:action="@{/logout}" method="post"><button class="secondary" type="submit">Sair</button></form></div>
+</aside>

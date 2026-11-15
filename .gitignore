@@ -5,3 +5,7 @@ __pycache__/
 .env
 .pytest_cache/
 .runtime/
+target/
+*.log
+.idea/
+*.iml

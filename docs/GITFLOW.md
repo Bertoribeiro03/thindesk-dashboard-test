@@ -55,20 +55,19 @@ Registro da estabilização em 13/11/2026: as três features foram commitadas e 
 
 ## Publicação no GitHub
 
-O `gh` não está disponível no PATH deste ambiente e o projeto começou sem repositório/remoto. Não há autenticação do CLI verificada. A publicação deve ocorrer somente quando `gh auth status` estiver OK ou houver remoto autorizado configurado; **o projeto não foi publicado no GitHub**.
+O remoto atual é `https://github.com/Bertoribeiro03/thindesk-dashboard-test.git`. A consulta `git ls-remote --heads origin` em 14/11/2026 confirmou `main` no commit `b9122e8` e `develop` no commit `1b69183`, referentes à versão anterior. A migração Spring Boot/Thymeleaf está na branch local `feature/spring-thymeleaf`; as alterações desta migração não foram publicadas. O GitHub CLI não está disponível no PATH; o acesso Git ao remoto foi verificado sem alterar seus refs.
 
-Para publicar futuramente, com GitHub CLI instalado e autenticado, execute na raiz do repositório:
+Para publicar futuramente a migração, revise as diferenças, registre os arquivos e envie a branch ao remoto existente:
 
 ```powershell
-gh auth status
-# O fluxo termina em develop; selecione main antes de criar o remoto.
-git checkout main
-gh repo create thindesk-dashboard --private --source=. --push
-git push -u origin main develop --tags
-git checkout develop
+git status
+git diff
+git add pom.xml mvnw mvnw.cmd .mvn/ src/ README.md .env.example .gitignore docs/
+git commit -m "feat: integração Spring Boot e Thymeleaf"
+git push -u origin feature/spring-thymeleaf
 ```
 
-Se já houver remoto configurado, confira o destino com `git remote -v` e a autorização de acesso, não crie outro repositório; use `git push -u origin main develop --tags`. O comando `gh repo create` só faz sentido quando não existe o remoto de destino. Nenhum token ou URL autenticada deve ser gravado em arquivos de evidência.
+Depois da revisão da branch, integre em develop, estabilize uma nova release com `mvnw verify` e faça os merges em main e develop. Preserve a tag histórica `v1.0.0`; uma nova entrega deve receber uma nova tag. A branch histórica `feature/api-dashboard` e as tags ainda podem ser publicadas com `git push origin feature/api-dashboard --tags`. Não recrie o repositório existente nem grave tokens/URLs autenticadas nas evidências. A publicação dos comandos acima permanece pendente.
 
 ## Hotfix futuro
 

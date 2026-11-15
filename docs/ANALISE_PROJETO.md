@@ -1,5 +1,7 @@
 # Análise do projeto
 
+> A análise funcional e a modelagem abaixo registram a base inicial do projeto. A arquitetura atual em Spring Boot/Thymeleaf, a integração dos recursos do ZIP e as decisões de compatibilidade estão em [MIGRACAO_SPRING.md](MIGRACAO_SPRING.md).
+
 ## Contexto e objetivo
 
 A administração precisa acompanhar volume, situação, resolução e tipos de demanda dos chamados de suporte. A solução reúne indicadores e registros técnicos em uma única interface somente leitura. Como o ambiente Thindesk não está disponível, a entrega implementa um contrato de leitura executável sobre SQLite com dados de EXEMPLO; não simula uma integração externa já concluída.

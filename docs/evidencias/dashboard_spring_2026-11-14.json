@@ -1,0 +1,245 @@
+{
+  "data": "2026-11-15T01:58:38.711Z",
+  "navegador": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "jar_sha256": "94d1547456950a18e56589151d62fe7803e0f0dd7984b9017dc4218ab5ad15a8",
+  "verificacoes": [
+    {
+      "cenario": "Carga inicial e Chart.js real via CDN",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": "500",
+        "cards": 7,
+        "linhas": 10,
+        "fonte": "Dados de exemplo (local)",
+        "auto": true,
+        "atualizado": "Atualizado às 22:58:55",
+        "chartVersion": "4.4.1",
+        "graficos": 3,
+        "erro": null
+      }
+    },
+    {
+      "cenario": "Paginação",
+      "resultado": "APROVADO",
+      "observado": {
+        "pagina": 2,
+        "texto": "Página 2 de 50 · 500 chamados",
+        "anteriorHabilitado": true
+      }
+    },
+    {
+      "cenario": "Filtro Rede com agrupamento semanal e retorno à página 1",
+      "resultado": "APROVADO",
+      "observado": {
+        "pagina": 1,
+        "filtros": {
+          "type_id": "3"
+        },
+        "agrupamento": "week",
+        "total": "83",
+        "tipos": [
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede",
+          "Rede"
+        ],
+        "periodos": [
+          "2026-W20",
+          "2026-W21",
+          "2026-W22",
+          "2026-W23",
+          "2026-W24",
+          "2026-W25",
+          "2026-W26",
+          "2026-W27",
+          "2026-W28",
+          "2026-W29",
+          "2026-W30",
+          "2026-W31",
+          "2026-W32",
+          "2026-W33",
+          "2026-W34",
+          "2026-W35",
+          "2026-W36",
+          "2026-W37",
+          "2026-W38",
+          "2026-W39",
+          "2026-W40",
+          "2026-W41",
+          "2026-W42",
+          "2026-W43",
+          "2026-W44",
+          "2026-W45"
+        ]
+      }
+    },
+    {
+      "cenario": "Período invertido bloqueado sem requisição HTTP",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "A data inicial deve ser anterior à final.",
+        "requisicoesAdicionais": 0
+      }
+    },
+    {
+      "cenario": "Estado vazio e valor nulo",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": "0",
+        "vazioVisivel": true,
+        "media": "—",
+        "anteriorDesabilitado": true,
+        "proximoDesabilitado": true
+      }
+    },
+    {
+      "cenario": "Layout responsivo em 600 px",
+      "resultado": "APROVADO",
+      "observado": {
+        "largura": 600,
+        "larguraDocumento": 585,
+        "colunasGraficos": "553px",
+        "tabelaRolavel": true
+      }
+    },
+    {
+      "cenario": "Menu móvel abre e fecha com Escape",
+      "resultado": "APROVADO",
+      "observado": {
+        "largura": 600,
+        "acessibilidade": true
+      }
+    },
+    {
+      "cenario": "Escape de conteúdo da API contra XSS",
+      "resultado": "APROVADO",
+      "observado": {
+        "elementosInjetados": 0,
+        "texto": "1<img src=x onerror=alert(1)><script>alert(1)</script>AbertoAlta<b>Ana</b><svg onload=alert(1)>05/01/2026, 08:00:00"
+      }
+    },
+    {
+      "cenario": "Tratamento de Chart.js indisponível",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Biblioteca de gráficos não carregada (verifique a conexão)."
+      }
+    },
+    {
+      "cenario": "Atualização automática real após 60 s",
+      "resultado": "APROVADO",
+      "observado": {
+        "consultasSummaryAntes": 6,
+        "consultasSummaryDepois": 7,
+        "desligadaAoFinal": true
+      }
+    },
+    {
+      "cenario": "Timeout real de 10 segundos",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Tempo de resposta da API esgotado."
+      }
+    },
+    {
+      "cenario": "Erro com API realmente parada",
+      "resultado": "APROVADO",
+      "observado": {
+        "mensagem": "Não foi possível conectar à API.",
+        "processoApiEncerrado": true
+      }
+    },
+    {
+      "cenario": "Recuperação pelo botão Tentar novamente",
+      "resultado": "APROVADO",
+      "observado": {
+        "total": 500,
+        "erroVisivel": false
+      }
+    },
+    {
+      "cenario": "Tentar novamente refaz init quando faltam metadados",
+      "resultado": "APROVADO",
+      "observado": {
+        "metadadosCarregados": true,
+        "total": 500
+      }
+    },
+    {
+      "cenario": "Thymeleaf e recursos sob context path /central",
+      "resultado": "APROVADO",
+      "observado": {
+        "links": [
+          "/central/",
+          "/central/",
+          "/central/chamados",
+          "/central/clientes",
+          "/central/tecnicos",
+          "/central/tipo-chamado",
+          "/central/ajustes-horarios",
+          "/central/docs",
+          "/central/docs",
+          "/central/clientes/novo"
+        ],
+        "scripts": [
+          "/central/js/script.js"
+        ],
+        "logo": 500
+      }
+    },
+    {
+      "cenario": "Criar, editar e excluir cliente em formulários Thymeleaf",
+      "resultado": "APROVADO",
+      "observado": {
+        "gravacaoReal": true,
+        "csrf": true
+      }
+    },
+    {
+      "cenario": "Validação e persistência de horário",
+      "resultado": "APROVADO",
+      "observado": {
+        "intervaloInvalidoRejeitado": true,
+        "inicio": "08:00",
+        "fim": "18:00"
+      }
+    },
+    {
+      "cenario": "Criação e edição de chamado refletidas no dashboard",
+      "resultado": "APROVADO",
+      "observado": {
+        "totalAposCriacao": 501,
+        "status": "concluido",
+        "consideracoes": "Conexão restabelecida."
+      }
+    },
+    {
+      "cenario": "Menu completo e consulta interativa da API",
+      "resultado": "APROVADO",
+      "observado": {
+        "statusEsperado": 400,
+        "codigo": "INVALID_STATUS"
+      }
+    }
+  ],
+  "versaoNavegador": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/157.0.8103.51",
+    "revision": "@653674df293788cf4932c40d914e9e15b41a2d31",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "jsVersion": "15.7.112.23"
+  },
+  "captura_desktop": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\spring_dashboard_desktop_2026-11-14.png",
+  "captura_vazio": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\spring_dashboard_vazio_2026-11-14.png",
+  "captura_600px": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\spring_dashboard_600px_2026-11-14.png",
+  "captura_erro": "C:\\Users\\BERTO\\Downloads\\dashboard administrativo\\thindesk-dashboard\\docs\\evidencias\\spring_dashboard_erro_2026-11-14.png",
+  "errosJavascript": [],
+  "resultado": "APROVADO",
+  "servidoresEncerrados": true
+}

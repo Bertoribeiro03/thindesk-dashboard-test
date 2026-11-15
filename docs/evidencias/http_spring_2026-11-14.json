@@ -1,0 +1,476 @@
+{
+  "data": "2026-11-14T22:58:49.979650-03:00",
+  "backend": "Spring Boot 3.5.16",
+  "jar_sha256": "94d1547456950a18e56589151d62fe7803e0f0dd7984b9017dc4218ab5ad15a8",
+  "respostas": {
+    "/api/v1/health": {
+      "http": 200,
+      "tempo_s": 1.071159,
+      "corpo": {
+        "status": "ok",
+        "database": "ok",
+        "data_source": "local_sqlite"
+      }
+    },
+    "/api/v1/meta/filters": {
+      "http": 200,
+      "tempo_s": 0.136736,
+      "corpo": {
+        "data": {
+          "date_range": {
+            "min": "2026-05-18",
+            "max": "2026-11-13"
+          },
+          "types": [
+            {
+              "id": 4,
+              "name": "Acesso/Senha"
+            },
+            {
+              "id": 6,
+              "name": "E-mail"
+            },
+            {
+              "id": 8,
+              "name": "ERP"
+            },
+            {
+              "id": 1,
+              "name": "Hardware"
+            },
+            {
+              "id": 5,
+              "name": "Impressora"
+            },
+            {
+              "id": 3,
+              "name": "Rede"
+            },
+            {
+              "id": 2,
+              "name": "Software"
+            },
+            {
+              "id": 7,
+              "name": "Telefonia"
+            }
+          ],
+          "statuses": [
+            {
+              "label": "Aberto",
+              "value": "aberto"
+            },
+            {
+              "label": "Em andamento",
+              "value": "em_andamento"
+            },
+            {
+              "label": "Concluído",
+              "value": "concluido"
+            },
+            {
+              "label": "Cancelado",
+              "value": "cancelado"
+            }
+          ]
+        }
+      }
+    },
+    "/api/v1/dashboard/summary": {
+      "http": 200,
+      "tempo_s": 0.080861,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": {
+          "total": 500,
+          "abertos": 58,
+          "em_andamento": 59,
+          "concluidos": 352,
+          "cancelados": 31,
+          "tempo_medio_resolucao_h": 59.5,
+          "backlog": 117,
+          "taxa_resolucao_pct": 70.4
+        }
+      }
+    },
+    "/api/v1/dashboard/timeseries?granularity=month": {
+      "http": 200,
+      "tempo_s": 0.115863,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": [
+          {
+            "period": "2026-05",
+            "abertos": 39,
+            "atendidos": 24
+          },
+          {
+            "period": "2026-06",
+            "abertos": 80,
+            "atendidos": 65
+          },
+          {
+            "period": "2026-07",
+            "abertos": 81,
+            "atendidos": 49
+          },
+          {
+            "period": "2026-08",
+            "abertos": 92,
+            "atendidos": 63
+          },
+          {
+            "period": "2026-09",
+            "abertos": 86,
+            "atendidos": 54
+          },
+          {
+            "period": "2026-10",
+            "abertos": 89,
+            "atendidos": 68
+          },
+          {
+            "period": "2026-11",
+            "abertos": 33,
+            "atendidos": 29
+          }
+        ],
+        "granularity": "month"
+      }
+    },
+    "/api/v1/dashboard/status-distribution": {
+      "http": 200,
+      "tempo_s": 0.023354,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": [
+          {
+            "status": "aberto",
+            "label": "Aberto",
+            "count": 58,
+            "pct": 11.6
+          },
+          {
+            "status": "em_andamento",
+            "label": "Em andamento",
+            "count": 59,
+            "pct": 11.8
+          },
+          {
+            "status": "concluido",
+            "label": "Concluído",
+            "count": 352,
+            "pct": 70.4
+          },
+          {
+            "status": "cancelado",
+            "label": "Cancelado",
+            "count": 31,
+            "pct": 6.2
+          }
+        ]
+      }
+    },
+    "/api/v1/dashboard/top-types?limit=8": {
+      "http": 200,
+      "tempo_s": 0.028891,
+      "corpo": {
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        },
+        "data": [
+          {
+            "type_id": 4,
+            "type": "Acesso/Senha",
+            "count": 104,
+            "rank": 1,
+            "pct": 20.8
+          },
+          {
+            "type_id": 2,
+            "type": "Software",
+            "count": 104,
+            "rank": 2,
+            "pct": 20.8
+          },
+          {
+            "type_id": 1,
+            "type": "Hardware",
+            "count": 101,
+            "rank": 3,
+            "pct": 20.2
+          },
+          {
+            "type_id": 3,
+            "type": "Rede",
+            "count": 67,
+            "rank": 4,
+            "pct": 13.4
+          },
+          {
+            "type_id": 6,
+            "type": "E-mail",
+            "count": 49,
+            "rank": 5,
+            "pct": 9.8
+          },
+          {
+            "type_id": 5,
+            "type": "Impressora",
+            "count": 43,
+            "rank": 6,
+            "pct": 8.6
+          },
+          {
+            "type_id": 8,
+            "type": "ERP",
+            "count": 17,
+            "rank": 7,
+            "pct": 3.4
+          },
+          {
+            "type_id": 7,
+            "type": "Telefonia",
+            "count": 15,
+            "rank": 8,
+            "pct": 3.0
+          }
+        ]
+      }
+    },
+    "/api/v1/tickets?page_size=2": {
+      "http": 200,
+      "tempo_s": 0.044166,
+      "corpo": {
+        "items": [
+          {
+            "id": 412,
+            "title": "Chamado 412 - Acesso/Senha",
+            "type": "Acesso/Senha",
+            "status": "concluido",
+            "priority": "critica",
+            "technician": "Bruno Lima",
+            "technical_notes": "Cabo de rede reparado.",
+            "opened_at": "2026-11-13 15:09:45",
+            "closed_at": "2026-11-13 16:13:08"
+          },
+          {
+            "id": 226,
+            "title": "Chamado 226 - Software",
+            "type": "Software",
+            "status": "concluido",
+            "priority": "baixa",
+            "technician": "Bruno Lima",
+            "technical_notes": "Atualização aplicada.",
+            "opened_at": "2026-11-13 13:05:51",
+            "closed_at": "2026-11-13 17:10:07"
+          }
+        ],
+        "page_size": 2,
+        "total": 500,
+        "pages": 250,
+        "page": 1,
+        "filters": {
+          "start": null,
+          "end": null,
+          "status": [],
+          "type_id": []
+        }
+      }
+    },
+    "/api/v1/dashboard/summary?start=2026-13-40": {
+      "http": 400,
+      "tempo_s": 0.043431,
+      "corpo": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Parâmetros inválidos.",
+          "details": [
+            {
+              "msg": "Use uma data válida no formato AAAA-MM-DD.",
+              "param": "start"
+            }
+          ]
+        }
+      }
+    },
+    "/api/v1/dashboard/summary?start=2026-02-01&end=2026-01-01": {
+      "http": 400,
+      "tempo_s": 0.01052,
+      "corpo": {
+        "error": {
+          "code": "INVALID_PERIOD",
+          "message": "A data inicial deve ser anterior à final.",
+          "details": null
+        }
+      }
+    },
+    "/api/v1/dashboard/summary?start=2020-01-01&end=2026-01-01": {
+      "http": 400,
+      "tempo_s": 0.010773,
+      "corpo": {
+        "error": {
+          "code": "PERIOD_TOO_LONG",
+          "message": "O período não pode exceder 731 dias.",
+          "details": null
+        }
+      }
+    },
+    "/api/v1/dashboard/summary?status=xpto": {
+      "http": 400,
+      "tempo_s": 0.012965,
+      "corpo": {
+        "error": {
+          "code": "INVALID_STATUS",
+          "message": "Status inválido.",
+          "details": {
+            "invalid": [
+              "xpto"
+            ],
+            "allowed": [
+              "aberto",
+              "em_andamento",
+              "concluido",
+              "cancelado"
+            ]
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/summary?type_id=abc": {
+      "http": 400,
+      "tempo_s": 0.012121,
+      "corpo": {
+        "error": {
+          "code": "INVALID_TYPE_ID",
+          "message": "Informe IDs de tipo inteiros positivos válidos.",
+          "details": null
+        }
+      }
+    },
+    "/api/v1/nao-existe": {
+      "http": 404,
+      "corpo": {
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "Recurso não encontrado.",
+          "details": null
+        }
+      }
+    },
+    "POST /api/clientes sem CSRF": {
+      "http": 403,
+      "corpo": {
+        "error": {
+          "code": "HTTP_ERROR",
+          "message": "Solicitação não autorizada.",
+          "details": null
+        }
+      }
+    },
+    "503 banco ausente": {
+      "http": 503,
+      "tempo_s": 0.739235,
+      "corpo": {
+        "error": {
+          "code": "DATABASE_UNAVAILABLE",
+          "message": "Banco de dados indisponível.",
+          "details": null
+        }
+      }
+    }
+  },
+  "consistencia": {
+    "total": 500,
+    "soma_cards_status": 500,
+    "soma_rosca": 500,
+    "total_lista": 500
+  },
+  "desempenho": {
+    "registros": 10000,
+    "amostras_por_endpoint": 5,
+    "metodo": "curl time_total; loopback, 1 aquecimento e 5 amostras por rota, JAR Spring Boot; banco separado",
+    "endpoints": {
+      "/dashboard/summary": {
+        "tempos_ms": [
+          34.353,
+          32.713,
+          35.046,
+          30.772000000000002,
+          31.356
+        ],
+        "mediana_ms": 32.713,
+        "max_ms": 35.046,
+        "meta_500ms": true
+      },
+      "/dashboard/timeseries": {
+        "tempos_ms": [
+          86.077,
+          66.366,
+          64.82300000000001,
+          63.75500000000001,
+          66.97
+        ],
+        "mediana_ms": 66.366,
+        "max_ms": 86.077,
+        "meta_500ms": true
+      },
+      "/dashboard/status-distribution": {
+        "tempos_ms": [
+          11.33,
+          12.612,
+          11.343,
+          12.254,
+          14.809
+        ],
+        "mediana_ms": 12.254,
+        "max_ms": 14.809,
+        "meta_500ms": true
+      },
+      "/dashboard/top-types?limit=8": {
+        "tempos_ms": [
+          32.232,
+          36.903,
+          38.612,
+          31.626,
+          42.08
+        ],
+        "mediana_ms": 36.903,
+        "max_ms": 42.08,
+        "meta_500ms": true
+      },
+      "/tickets?page_size=100": {
+        "tempos_ms": [
+          35.483000000000004,
+          21.881999999999998,
+          20.652,
+          18.532,
+          18.686999999999998
+        ],
+        "mediana_ms": 20.652,
+        "max_ms": 35.483000000000004,
+        "meta_500ms": true
+      }
+    }
+  },
+  "resultado": "APROVADO",
+  "servidores_encerrados": true
+}

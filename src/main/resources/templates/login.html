@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Entrar · Thindesk</title><link rel="icon" href="data:,"><link rel="stylesheet" th:href="@{/css/dashboard.css}"><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body class="login-page"><main class="panel login-card"><img th:src="@{/images/logo.png}" alt="Thindesk Service Manager" width="160" height="160"><h1>Bem-vindo</h1><p class="subtitle">Acesse a central de atendimento.</p>
+  <div th:if="${param.error}" class="form-errors" role="alert">Usuário ou senha inválidos.</div><div th:if="${param.logout}" class="success-banner">Sessão encerrada.</div>
+  <form th:if="${securityEnabled}" th:action="@{/login}" method="post"><label for="username">Usuário<input id="username" name="username" autocomplete="username" required></label><label for="password">Senha<input id="password" name="password" type="password" autocomplete="current-password" required></label><button type="submit">Entrar</button></form>
+  <p th:unless="${securityEnabled}" class="local-access">O login está desativado neste ambiente local. <a th:href="@{/}">Acessar o dashboard</a>.</p>
+</main></body></html>
